@@ -1,10 +1,19 @@
-from stats import character_counter
+import sys
+
+from stats import counter, final
 
 
 def main():
-    numbers = character_counter()
-
-    print(numbers)
+    words = counter()
+    print(f"""
+============ BOOKBOT ============
+Analyzing book found at {sys.argv[1]}...
+----------- Word Count ----------
+Found {words} total words
+--------- Character Count -------
+        """)
+    final()
+    print("============= END ===============")
 
 
 main()

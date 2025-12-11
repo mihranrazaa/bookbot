@@ -1,5 +1,11 @@
+import sys
+
+
 def get_book_text():
-    with open("books/frankenstein.txt") as f:
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    with open(sys.argv[1]) as f:
         file_contents = f.read()
     return str(file_contents)
 
@@ -21,4 +27,16 @@ def character_counter():
     return character_dict
 
 
-print(character_counter())
+def sort_on(items):
+    print(items["num"])
+
+
+def final():
+    character_dict = character_counter()
+    sorted_dict = sorted(character_dict.items(), key=lambda x: x[1], reverse=True)
+    for char, num in sorted_dict:
+        if char.isalpha():
+            print(f"{char}: {num}")
+
+
+final()
